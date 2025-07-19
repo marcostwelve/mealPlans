@@ -36,8 +36,8 @@ namespace Services.Services
             {
                 Subject = claims,
                 Expires = DateTime.UtcNow.AddHours(Convert.ToInt32(_configuration["TokenConfiguration:ExpireHours"])),
-                Issuer = _configuration["Jwt:Issuer"],
-                Audience = _configuration["Jwt:Audience"],
+                Issuer = _configuration["TokenConfiguration:Issuer"],
+                Audience = _configuration["TokenConfiguration:Audience"],
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
