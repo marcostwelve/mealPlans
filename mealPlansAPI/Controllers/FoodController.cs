@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Repository.Model.Dto.Patient;
+using Repository.Model.Dto.Food;
 using Services.Services.IServices;
 
 namespace mealPlansAPI.Controllers
@@ -8,48 +8,45 @@ namespace mealPlansAPI.Controllers
     [ApiController]
     [Route("api/[controller]")]
     [Authorize]
-    public class PatientsController : ControllerBase
+    public class FoodController : ControllerBase
     {
-        private readonly IPatientService _patientService;
-
-        public PatientsController(IPatientService patientService)
+        private readonly IFoodService _foodService;
+        public FoodController(IFoodService foodService)
         {
-            _patientService = patientService;
+            _foodService = foodService;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllPatients()
+        public async Task<IActionResult> GetAllFoods()
         {
             try
             {
-                var patients = await _patientService.GetAllPatientsAsync();
-
-                if (patients == null)
+                var foods = await _foodService.GetAllFoodsAsync();
+                if (foods == null || !foods.Any())
                 {
-                    return NotFound("Nenhum paciente encontrado");
+                    return NotFound("Nenhum alimento encontrado");
                 }
-                return Ok(patients);
+                return Ok(foods);
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Erro interno de servidor: {ex.Message}");
             }
-
         }
 
-        [HttpGet("{id}", Name = "GetPatientById")]
-        public async Task<IActionResult> GetPatientById(int id)
+        [HttpGet("{id}", Name = "GetFoodById")]
+        public async Task<IActionResult> GetFoodById(int id)
         {
             try
             {
-                var patient = await _patientService.GetPatientByIdAsync(id);
+                var food = await _foodService.GetFoodByIdAsync(id);
 
-                if (patient == null)
+                if (food == null)
                 {
-                    return NotFound($"Paciente com ID {id} não encontrado");
+                    return NotFound($"Alimento com ID {id} não encontrado");
                 }
 
-                return Ok(patient);
+                return Ok(food);
             }
             catch (Exception ex)
             {
@@ -59,12 +56,12 @@ namespace mealPlansAPI.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Administrador,Nutricionista")]
-        public async Task<IActionResult> CreatePatient([FromBody] CreatePatientDto createPatientDto)
+        public async Task<IActionResult> CreateFood([FromBody] CreateFoodDto foodDto)
         {
             try
             {
-                var newPatient = await _patientService.CreatePatientAsync(createPatientDto);
-                return CreatedAtAction(nameof(GetPatientById), new { Id = newPatient.Id }, newPatient);
+                var newFood = await _foodService.CreateFoodAsync(foodDto);
+                return CreatedAtRoute("GetFoodById", new { id = newFood.Id }, newFood);
             }
             catch (Exception ex)
             {
@@ -74,11 +71,15 @@ namespace mealPlansAPI.Controllers
 
         [HttpPut("{id}")]
         [Authorize(Roles = "Administrador,Nutricionista")]
-        public async Task<IActionResult> UpdatePatientAsync(int id, [FromBody] UpdatePatientDto updatePatientDto)
+        public async Task<IActionResult> UpdateFood(int id, [FromBody] UpdateFoodDto foodDto)
         {
             try
             {
-                await _patientService.UpdatePatientAsync(updatePatientDto);
+                if (id != foodDto.Id)
+                {
+                    return BadRequest($"ID {id} do alimento não corresponde ao ID fornecido na URL.");
+                }
+                await _foodService.UpdateFoodAsync(foodDto);
                 return NoContent();
             }
             catch (Exception ex)
@@ -89,11 +90,11 @@ namespace mealPlansAPI.Controllers
 
         [HttpDelete("{id}")]
         [Authorize(Roles = "Administrador")]
-        public async Task<IActionResult> DeletePatient(int id) 
+        public async Task<IActionResult> DeleteFood(int id)
         {
             try
             {
-                await _patientService.RemovePatientAsync(id);
+                await _foodService.DeleteFoodAsync(id);
                 return NoContent();
             }
             catch (Exception ex)

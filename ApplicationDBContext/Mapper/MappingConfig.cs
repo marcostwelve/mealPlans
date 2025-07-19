@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Repository.Model;
 using Repository.Model.Dto.Auth.Dtos;
+using Repository.Model.Dto.Food;
 using Repository.Model.Dto.Patient;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,10 @@ namespace Repository.Mapper
             CreateMap<Patient, CreatePatientDto>().ReverseMap();
             CreateMap<Patient, UpdatePatientDto>().ReverseMap();
             CreateMap<Patient, ViewPatientDto>().ReverseMap();
+
+            CreateMap<Food, CreateFoodDto>().ReverseMap();
+            CreateMap<Food, FoodDto>().ReverseMap();
+            CreateMap<Food, UpdateFoodDto>().ReverseMap();
         }
     }
 }

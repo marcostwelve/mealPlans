@@ -41,7 +41,7 @@ namespace Repository.Repository
 
         public async Task RemovePatientAsync(int id)
         {
-            var patient =  _dbContext.Patients.FirstOrDefault(p => p.Id == id);
+            var patient =  await GetPatientByIdAsync(id);
             patient.IsActive = false;
             _dbContext.Patients.Update(patient);
             await _dbContext.SaveChangesAsync();

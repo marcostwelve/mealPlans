@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repository.Model
+namespace Repository.Model.Dto.Food
 {
-    public class Food
+    public class UpdateFoodDto
     {
         public int Id { get; set; }
         public string Name { get; set; }

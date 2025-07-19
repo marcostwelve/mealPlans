@@ -33,7 +33,7 @@ namespace Services.Services
             catch (Exception ex)
             {
                 
-                throw new Exception($"Erro ocorreu ao criar paciente: {ex.Message}", ex);
+                throw new Exception($"Erro ocorreu ao criar paciente: {ex.Message}");
             }
             
         }
@@ -48,7 +48,7 @@ namespace Services.Services
             }
             catch (Exception ex)
             {
-                throw new Exception($"Erro ocorreu ao obter todos os pacientes: {ex.Message}", ex);
+                throw new Exception($"Erro ocorreu ao obter todos os pacientes: {ex.Message}");
             }
         }
 
@@ -62,7 +62,7 @@ namespace Services.Services
             }
             catch (Exception ex)
             {
-                throw new Exception($"Erro ocorreu ao obter paciente com ID {id}: {ex.Message}", ex);
+                throw new Exception($"Erro ocorreu ao obter paciente com ID {id}: {ex.Message}");
             }
         }
 
@@ -79,7 +79,7 @@ namespace Services.Services
             }
             catch (Exception ex)
             {
-                throw new Exception($"Erro ocorreu ao remover paciente com ID {id}: {ex.Message}", ex);
+                throw new Exception($"Erro ocorreu ao remover paciente com ID {id}: {ex.Message}");
             }
         }
 
@@ -92,7 +92,7 @@ namespace Services.Services
             }
             catch (Exception ex)
             {
-                throw new Exception($"Erro ocorreu ao atualizar paciente: {ex.Message}", ex);
+                throw new Exception($"Erro ocorreu ao atualizar paciente: {ex.Message}");
             }
         }
     }
