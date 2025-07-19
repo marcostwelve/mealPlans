@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Repository.Model;
+using Repository.Model.Dto.Auth.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Repository.Context
 {
-    public class ApplicationDBContext : IdentityDbContext
+    public class ApplicationDBContext : DbContext
     {
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options) { }
 
@@ -17,6 +18,7 @@ namespace Repository.Context
         public DbSet<MealPlan> MealPlans { get; set; }
         public DbSet<MealPlanItem> MealPlanItems { get; set; }
         public DbSet<Food> Foods { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -40,6 +42,10 @@ namespace Repository.Context
                .WithMany()
                .HasForeignKey(mpi => mpi.FoodId);
             });
+
+            modelBuilder.Entity<User>()
+                .Property(u => u.Role)
+                .HasConversion<string>();
 
         }
     }

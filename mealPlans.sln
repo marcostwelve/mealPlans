@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35919.96 d17.13
+VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mealPlansAPI", "mealPlansAPI\mealPlansAPI.csproj", "{AC136348-8BD1-4AC5-9E67-964C71F90F00}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "ApplicationDBContext\Repository.csproj", "{E740E653-284D-4A23-B7E3-5D723F467CCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{8EBD8550-D2ED-4A2F-82B9-BBEA0695F69B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{E740E653-284D-4A23-B7E3-5D723F467CCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E740E653-284D-4A23-B7E3-5D723F467CCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E740E653-284D-4A23-B7E3-5D723F467CCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EBD8550-D2ED-4A2F-82B9-BBEA0695F69B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EBD8550-D2ED-4A2F-82B9-BBEA0695F69B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EBD8550-D2ED-4A2F-82B9-BBEA0695F69B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EBD8550-D2ED-4A2F-82B9-BBEA0695F69B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

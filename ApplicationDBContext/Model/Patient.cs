@@ -13,7 +13,7 @@ namespace Repository.Model
 
         public DateTime DateOfBirth { get; set; }
 
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
 
         public IEnumerable<MealPlan> MealPlans { get; set; }
     }

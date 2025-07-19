@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repository
+namespace Repository.Helpers.Enum
 {
-    public class MappingConfig
+    public enum RoleUser
     {
+        Administrador = 1,
+        Nutricionista = 2,
     }
 }
