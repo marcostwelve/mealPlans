@@ -24,12 +24,17 @@ namespace Repository.Repository
         public async Task CreatePatientAsync(Patient entity)
         {
             await _dbContext.Patients.AddAsync(entity);
-            await _dbContext.SaveChangesAsync();
+            await SavePatientAsync();
         }
 
-        public async Task<IEnumerable<Patient>> GetAllPatientsAsync()
+        public async Task<IEnumerable<Patient>> GetAllPatientsAsync(Pagination pagination)
         {
-            var patients = await _dbContext.Patients.Where(p => p.IsActive).ToListAsync();
+            var patients = await _dbContext.Patients.Where(p => p.IsActive)
+                .OrderBy(p => p.FullName)
+                .Skip((pagination.PageNumber - 1) * pagination.PageSize)
+                .Take(pagination.PageSize)
+                .ToListAsync();
+
             return patients;
         }
 
@@ -43,8 +48,9 @@ namespace Repository.Repository
         {
             var patient =  await GetPatientByIdAsync(id);
             patient.IsActive = false;
-            _dbContext.Patients.Update(patient);
-            await _dbContext.SaveChangesAsync();
+            await UpdatePatientAsync(patient);
+             
+            await SavePatientAsync();
         }
 
         public async Task<bool> SavePatientAsync()
@@ -55,7 +61,7 @@ namespace Repository.Repository
         public async Task UpdatePatientAsync(Patient entity)
         {
             _dbContext.Patients.Update(entity);
-            await _dbContext.SaveChangesAsync();
+            await SavePatientAsync();
         }
     }
 }

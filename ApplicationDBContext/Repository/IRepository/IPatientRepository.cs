@@ -12,7 +12,7 @@ namespace Repository.Repository.IRepository
     public interface IPatientRepository
     {
         Task<Patient> GetPatientByIdAsync(int id);
-        Task<IEnumerable<Patient>> GetAllPatientsAsync();
+        Task<IEnumerable<Patient>> GetAllPatientsAsync(Pagination pagination);
         Task CreatePatientAsync(Patient entity);
         Task UpdatePatientAsync(Patient entity);
         Task RemovePatientAsync(int id);

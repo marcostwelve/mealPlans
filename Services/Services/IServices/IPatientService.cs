@@ -11,7 +11,7 @@ namespace Services.Services.IServices
     public interface IPatientService
     {
         Task<ViewPatientDto> GetPatientByIdAsync(int id);
-        Task<IEnumerable<ViewPatientDto>> GetAllPatientsAsync();
+        Task<IEnumerable<ViewPatientDto>> GetAllPatientsAsync(Pagination pagination);
         Task<ViewPatientDto> CreatePatientAsync(CreatePatientDto entity);
         Task UpdatePatientAsync(UpdatePatientDto entity);
         Task RemovePatientAsync(int id);

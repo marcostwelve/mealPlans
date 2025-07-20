@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "ApplicationDB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{8EBD8550-D2ED-4A2F-82B9-BBEA0695F69B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mealPlansAPI.Tests", "mealPlansAPI.Tests\mealPlansAPI.Tests.csproj", "{1E30E5B4-5344-4B29-B836-E3943D9F5F3E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{8EBD8550-D2ED-4A2F-82B9-BBEA0695F69B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EBD8550-D2ED-4A2F-82B9-BBEA0695F69B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EBD8550-D2ED-4A2F-82B9-BBEA0695F69B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E30E5B4-5344-4B29-B836-E3943D9F5F3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E30E5B4-5344-4B29-B836-E3943D9F5F3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E30E5B4-5344-4B29-B836-E3943D9F5F3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E30E5B4-5344-4B29-B836-E3943D9F5F3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

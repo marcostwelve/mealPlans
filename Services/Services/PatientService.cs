@@ -15,10 +15,10 @@ namespace Services.Services
     {
         private readonly IMapper _mapper;
         private readonly IPatientRepository _patientRepository;
-        public PatientService(IMapper mapper, IPatientRepository patientRepository)
+        public PatientService(IPatientRepository patientRepository, IMapper mapper)
         {
-            _mapper = mapper;
             _patientRepository = patientRepository;
+            _mapper = mapper;
         }
         public async Task<ViewPatientDto> CreatePatientAsync(CreatePatientDto entity)
         {
@@ -38,11 +38,11 @@ namespace Services.Services
             
         }
 
-        public async Task<IEnumerable<ViewPatientDto>> GetAllPatientsAsync()
+        public async Task<IEnumerable<ViewPatientDto>> GetAllPatientsAsync(Pagination pagination)
         {
             try
             {
-                var patients = await _patientRepository.GetAllPatientsAsync();
+                var patients = await _patientRepository.GetAllPatientsAsync(pagination);
                 var patientsDto = _mapper.Map<IEnumerable<ViewPatientDto>>(patients);
                 return patientsDto;
             }
@@ -75,6 +75,7 @@ namespace Services.Services
                 {
                     throw new Exception($"Paciente com ID {id} não encontrado.");
                 }
+                 
                 await _patientRepository.RemovePatientAsync(id);
             }
             catch (Exception ex)
