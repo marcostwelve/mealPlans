@@ -10,7 +10,7 @@ namespace Services.Services.IServices
 {
     public interface IFoodService
     {
-        Task<IEnumerable<FoodDto>> GetAllFoodsAsync();
+        Task<IEnumerable<FoodDto>> GetAllFoodsAsync(Pagination pagination);
         Task<FoodDto> GetFoodByIdAsync(int id);
         Task<UpdateFoodDto> CreateFoodAsync(CreateFoodDto food);
         Task UpdateFoodAsync(UpdateFoodDto food);

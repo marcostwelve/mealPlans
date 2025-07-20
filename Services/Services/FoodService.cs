@@ -52,7 +52,7 @@ namespace Services.Services
             }
         }
 
-        public async Task<IEnumerable<FoodDto>> GetAllFoodsAsync()
+        public async Task<IEnumerable<FoodDto>> GetAllFoodsAsync(Pagination pagination)
         {
             try
             {

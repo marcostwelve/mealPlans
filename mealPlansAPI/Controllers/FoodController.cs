@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Repository.Model;
 using Repository.Model.Dto.Food;
 using Services.Services.IServices;
 
@@ -17,11 +18,11 @@ namespace mealPlansAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllFoods()
+        public async Task<IActionResult> GetAllFoods(Pagination pagination)
         {
             try
             {
-                var foods = await _foodService.GetAllFoodsAsync();
+                var foods = await _foodService.GetAllFoodsAsync(pagination);
                 if (foods == null || !foods.Any())
                 {
                     return NotFound("Nenhum alimento encontrado");

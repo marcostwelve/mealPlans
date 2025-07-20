@@ -9,7 +9,7 @@ namespace Repository.Repository.IRepository
 {
     public interface IFoodRepository
     {
-        Task<IEnumerable<Food>> GetAllFoodsAsync();
+        Task<IEnumerable<Food>> GetAllFoodsAsync(Pagination pagination);
         Task<Food> GetFoodByIdAsync(int id);
         Task CreateFoodAsync(Food food);
         Task UpdateFoodAsync(Food food);

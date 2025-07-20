@@ -32,9 +32,13 @@ namespace Repository.Repository
             await SaveFoodAsync();
         }
 
-        public async Task<IEnumerable<Food>> GetAllFoodsAsync()
+        public async Task<IEnumerable<Food>> GetAllFoodsAsync(Pagination pagination)
         {
-            var foods = await _context.Foods.AsNoTracking().ToListAsync();
+            var foods = await _context.Foods.AsNoTracking()
+                .OrderBy(f => f.Name)
+                .Skip((pagination.PageNumber - 1) * pagination.PageSize)
+                .Take(pagination.PageSize)
+                .ToListAsync();
             return foods;
         }
 
