@@ -9,12 +9,10 @@ namespace Repository.Model
     public class MealPlanItem
     {
         public int Id { get; set; }
-
-        public string ServingSize { get; set; }
-
+        public double Quantity { get; set; }
+        public string Unit { get; set; }
         public int MealPlanId { get; set; }
         public MealPlan MealPlan { get; set; }
-
         public int FoodId { get; set; }
         public Food Food { get; set; }
     }
