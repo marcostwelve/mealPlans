@@ -224,9 +224,9 @@ WORKDIR /src
 
 # Copia os arquivos de projeto (.csproj) e restaura os pacotes NuGet
 COPY ["mealPlansAPI/mealPlansAPI.csproj", "mealPlansAPI/"]
-COPY ["Application/Application.csproj", "Application/"]
+COPY ["Services/Services.csproj", "Services/"]
 # Se você chamou de Repository, ajuste o nome da pasta e do .csproj aqui
-COPY ["Infrastructure/Infrastructure.csproj", "Infrastructure/"] 
+COPY ["Repository.csproj", "ApplicationDBContext/"]
 RUN dotnet restore "mealPlansAPI/mealPlansAPI.csproj"
 
 # Copia todo o resto do código-fonte
