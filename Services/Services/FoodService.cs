@@ -40,10 +40,6 @@ namespace Services.Services
             try
             {
                 var food = await _foodRepository.GetFoodByIdAsync(id);
-                if (food == null)
-                {
-                    throw new Exception($"Alimento com id {id} não encontrado.");
-                }
                 await _foodRepository.DeleteFoodAsync(id);
             }
             catch (Exception ex)
@@ -56,13 +52,9 @@ namespace Services.Services
         {
             try
             {
-                var foods = await _foodRepository.GetAllFoodsAsync();
-                if (foods == null)
-                {
-                    throw new Exception("Nenhum alimento encontrado.");
-                }
-
+                var foods = await _foodRepository.GetAllFoodsAsync(pagination);
                 var foodDtos = _mapper.Map<IEnumerable<FoodDto>>(foods);
+
                 return foodDtos;
             }
             catch (Exception ex)
@@ -76,10 +68,6 @@ namespace Services.Services
             try
             {
                 var food = await _foodRepository.GetFoodByIdAsync(id);
-                if (food == null)
-                {
-                    throw new Exception($"Alimento com id {id} não encontrado.");
-                }
                 var foodDto = _mapper.Map<FoodDto>(food);
 
                 return foodDto;

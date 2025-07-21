@@ -18,7 +18,7 @@ namespace mealPlansAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllFoods(Pagination pagination)
+        public async Task<IActionResult> GetAllFoods([FromQuery] Pagination pagination)
         {
             try
             {
